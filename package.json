@@ -1,0 +1,48 @@
+{
+  "name": "antlr4ts-sql",
+  "version": "1.0.0",
+  "description": "Pre-built ANTL4 lexers and parsers for SQL: PostgreSQL, MySQL, SQL Server and Oracle (PL/SQL)",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "antlr4ts-all": "npm run antlr4ts-mysql && npm run antlr4ts-plsql && npm run antlr4ts-tsql",
+    "antlr4ts-mysql": "antlr4ts -Xexact-output-dir -o src/grammar-output/mysql -package parsers src/grammars/mysql/MySQLLexer.g4 src/grammars/mysql/MultiQueryMySQLParser.g4",
+    "antlr4ts-plsql": "antlr4ts -Xexact-output-dir -o src/grammar-output/plsql -package parsers src/grammars/plsql/PlSqlLexer.g4 src/grammars/plsql/PlSqlParser.g4",
+    "antlr4ts-plpgsql": "antlr4ts -Xexact-output-dir -o src/grammar-output/plpgsql -package parsers src/grammars/plpgsql/PLpgSQLLexer.g4 src/grammars/plpgsql/PLpgSQLParser.g4",
+    "antlr4ts-tsql": "antlr4ts -Xexact-output-dir -o src/grammar-output/tsql -package parsers src/grammars/tsql/TSqlLexer.g4 src/grammars/tsql/TSqlParser.g4",
+    "build": "tsc --build --clean && tsc",
+    "test": "npx jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/modeldba/antlr4ts-sql.git"
+  },
+  "keywords": [
+    "sql",
+    "antlr4",
+    "parser",
+    "lexer",
+    "postgresql",
+    "mysql",
+    "sqlserver",
+    "oracle",
+    "database",
+    "plpgsql",
+    "plsql",
+    "tsql"
+  ],
+  "author": "modelDBA",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/modeldba/antlr4ts-sql/issues"
+  },
+  "homepage": "https://github.com/modeldba/antlr4ts-sql#readme",
+  "dependencies": {
+    "antlr4ts": "^0.5.0-alpha.3"
+  },
+  "devDependencies": {
+    "antlr4ts-cli": "^0.5.0-alpha.3"
+  }
+}

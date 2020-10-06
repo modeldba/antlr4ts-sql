@@ -39,7 +39,7 @@
   "bugs": {
     "url": "https://github.com/modeldba/antlr4ts-sql/issues"
   },
-  "homepage": "https://github.com/modeldba/antlr4ts-sql#readme",
+  "homepage": "https://modeldba.com/antlr4ts-sql/",
   "dependencies": {
     "antlr4ts": "^0.5.0-alpha.3"
   },

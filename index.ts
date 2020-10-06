@@ -1,3 +1,6 @@
+export * from 'antlr4ts';
+export * from 'antlr4ts/tree/ParseTreeWalker'
+
 export * from './src/antlr4tsSQL';
 
 export * from './src/models/SQLDialect';

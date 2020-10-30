@@ -1,6 +1,6 @@
 {
   "name": "antlr4ts-sql",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Pre-built ANTL4 lexers and parsers for SQL: PostgreSQL, MySQL, SQL Server and Oracle (PL/SQL)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

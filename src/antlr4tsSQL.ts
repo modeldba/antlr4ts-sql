@@ -1,4 +1,4 @@
-import { CommonTokenStream, ANTLRInputStream, Parser } from "antlr4ts";
+import { CommonTokenStream, ANTLRInputStream, Parser, ANTLRErrorListener, ConsoleErrorListener, Lexer } from "antlr4ts";
 import { ParseTree } from "antlr4ts/tree/ParseTree";
 import { CaseChangingStream } from "./models/CaseChangingStream";
 import { SQLDialect } from "./models/SQLDialect";
@@ -19,10 +19,10 @@ export class antlr4tsSQL {
     this.dialect = dialect;
   }
 
-  getTokens(sqlScript: string): CommonTokenStream {
+  getTokens(sqlScript: string, errorListeners?: ANTLRErrorListener<any>[]): CommonTokenStream {
     const chars = new ANTLRInputStream(sqlScript);
     const caseChangingCharStream = new CaseChangingStream(chars, true);
-    let lexer = null;
+    let lexer: Lexer = null;
     if (this.dialect === SQLDialect.TSQL) {
       lexer = new TSqlLexer(caseChangingCharStream);
     } else if (this.dialect === SQLDialect.PLSQL) {
@@ -32,12 +32,18 @@ export class antlr4tsSQL {
     } else if (this.dialect === SQLDialect.MYSQL) {
       lexer = new MySQLLexer(chars);
     }
+    if (errorListeners !== null && errorListeners !== undefined) {
+      lexer.removeErrorListener(ConsoleErrorListener.INSTANCE);
+      for (const listener of errorListeners) {
+        lexer.addErrorListener(listener);
+      }
+    }
     const tokens = new CommonTokenStream(lexer);
     return tokens;
   }
 
-  getParser(tokens: CommonTokenStream): Parser {
-    let parser = null;
+  getParser(tokens: CommonTokenStream, errorListeners?: ANTLRErrorListener<any>[]): Parser {
+    let parser: Parser = null;
     if (this.dialect === SQLDialect.TSQL) {
       parser = new TSqlParser(tokens);
     } else if (this.dialect === SQLDialect.PLSQL) {
@@ -46,6 +52,12 @@ export class antlr4tsSQL {
       parser = new PLpgSQLParser(tokens);
     } else if (this.dialect === SQLDialect.MYSQL) {
       parser = new MultiQueryMySQLParser(tokens);
+    }
+    if (errorListeners !== null && errorListeners !== undefined) {
+      parser.removeErrorListener(ConsoleErrorListener.INSTANCE);
+      for (const listener of errorListeners) {
+        parser.addErrorListener(listener);
+      }
     }
     return parser;
   }

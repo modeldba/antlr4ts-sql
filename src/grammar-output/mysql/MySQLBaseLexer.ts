@@ -12,8 +12,6 @@ export abstract class MySQLBaseLexer extends Lexer {
   charsets: string[]
   sqlMode?: SqlMode
   
-  type: any;
-
   public constructor(input: CharStream) {
     super(input)
     this.inVersionComment = false

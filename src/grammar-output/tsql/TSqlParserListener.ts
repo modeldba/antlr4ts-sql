@@ -1,10 +1,17 @@
-// Generated from grammars/tsql/TSqlParser.g4 by ANTLR 4.7.3-SNAPSHOT
+// Generated from src/grammars/tsql/TSqlParser.g4 by ANTLR 4.9.0-SNAPSHOT
 
 
 import { ParseTreeListener } from "antlr4ts/tree/ParseTreeListener";
 
+import { RANKING_WINDOWED_FUNCContext } from "./TSqlParser";
+import { AGGREGATE_WINDOWED_FUNCContext } from "./TSqlParser";
+import { ANALYTIC_WINDOWED_FUNCContext } from "./TSqlParser";
+import { SCALAR_FUNCTIONContext } from "./TSqlParser";
+import { BUILT_IN_FUNCContext } from "./TSqlParser";
+import { FREE_TEXTContext } from "./TSqlParser";
 import { BINARY_CHECKSUMContext } from "./TSqlParser";
 import { CASTContext } from "./TSqlParser";
+import { TRY_CASTContext } from "./TSqlParser";
 import { CONVERTContext } from "./TSqlParser";
 import { CHECKSUMContext } from "./TSqlParser";
 import { COALESCEContext } from "./TSqlParser";
@@ -22,18 +29,15 @@ import { NULLIFContext } from "./TSqlParser";
 import { STUFFContext } from "./TSqlParser";
 import { SESSION_USERContext } from "./TSqlParser";
 import { SYSTEM_USERContext } from "./TSqlParser";
+import { USERContext } from "./TSqlParser";
 import { ISNULLContext } from "./TSqlParser";
 import { XML_DATA_TYPE_FUNCContext } from "./TSqlParser";
-import { IFFContext } from "./TSqlParser";
-import { RANKING_WINDOWED_FUNCContext } from "./TSqlParser";
-import { AGGREGATE_WINDOWED_FUNCContext } from "./TSqlParser";
-import { ANALYTIC_WINDOWED_FUNCContext } from "./TSqlParser";
-import { SCALAR_FUNCTIONContext } from "./TSqlParser";
+import { IIFContext } from "./TSqlParser";
 import { STRINGAGGContext } from "./TSqlParser";
 import { Tsql_fileContext } from "./TSqlParser";
 import { BatchContext } from "./TSqlParser";
+import { Batch_level_statementContext } from "./TSqlParser";
 import { Sql_clausesContext } from "./TSqlParser";
-import { Sql_clauseContext } from "./TSqlParser";
 import { Dml_clauseContext } from "./TSqlParser";
 import { Ddl_clauseContext } from "./TSqlParser";
 import { Backup_statementContext } from "./TSqlParser";
@@ -111,6 +115,8 @@ import { Drop_availability_groupContext } from "./TSqlParser";
 import { Alter_availability_groupContext } from "./TSqlParser";
 import { Alter_availability_group_startContext } from "./TSqlParser";
 import { Alter_availability_group_optionsContext } from "./TSqlParser";
+import { Ip_v4_failoverContext } from "./TSqlParser";
+import { Ip_v6_failoverContext } from "./TSqlParser";
 import { Create_or_alter_broker_priorityContext } from "./TSqlParser";
 import { Drop_broker_priorityContext } from "./TSqlParser";
 import { Alter_certificateContext } from "./TSqlParser";
@@ -124,6 +130,7 @@ import { Drop_credentialContext } from "./TSqlParser";
 import { Drop_cryptograhic_providerContext } from "./TSqlParser";
 import { Drop_databaseContext } from "./TSqlParser";
 import { Drop_database_audit_specificationContext } from "./TSqlParser";
+import { Drop_database_encryption_keyContext } from "./TSqlParser";
 import { Drop_database_scoped_credentialContext } from "./TSqlParser";
 import { Drop_defaultContext } from "./TSqlParser";
 import { Drop_endpointContext } from "./TSqlParser";
@@ -245,6 +252,7 @@ import { Create_contractContext } from "./TSqlParser";
 import { Conversation_statementContext } from "./TSqlParser";
 import { Message_statementContext } from "./TSqlParser";
 import { Merge_statementContext } from "./TSqlParser";
+import { When_matchesContext } from "./TSqlParser";
 import { Merge_matchedContext } from "./TSqlParser";
 import { Merge_not_matchedContext } from "./TSqlParser";
 import { Delete_statementContext } from "./TSqlParser";
@@ -252,6 +260,7 @@ import { Delete_statement_fromContext } from "./TSqlParser";
 import { Insert_statementContext } from "./TSqlParser";
 import { Insert_statement_valueContext } from "./TSqlParser";
 import { Receive_statementContext } from "./TSqlParser";
+import { Select_statement_standaloneContext } from "./TSqlParser";
 import { Select_statementContext } from "./TSqlParser";
 import { TimeContext } from "./TSqlParser";
 import { Update_statementContext } from "./TSqlParser";
@@ -260,6 +269,7 @@ import { Output_dml_list_elemContext } from "./TSqlParser";
 import { Output_column_nameContext } from "./TSqlParser";
 import { Create_databaseContext } from "./TSqlParser";
 import { Create_indexContext } from "./TSqlParser";
+import { Create_xml_indexContext } from "./TSqlParser";
 import { Create_or_alter_procedureContext } from "./TSqlParser";
 import { Create_or_alter_triggerContext } from "./TSqlParser";
 import { Create_or_alter_dml_triggerContext } from "./TSqlParser";
@@ -277,6 +287,7 @@ import { Function_optionContext } from "./TSqlParser";
 import { Create_statisticsContext } from "./TSqlParser";
 import { Update_statisticsContext } from "./TSqlParser";
 import { Create_tableContext } from "./TSqlParser";
+import { Table_indicesContext } from "./TSqlParser";
 import { Table_optionsContext } from "./TSqlParser";
 import { Create_viewContext } from "./TSqlParser";
 import { View_attributeContext } from "./TSqlParser";
@@ -335,6 +346,7 @@ import { Rowset_function_limitedContext } from "./TSqlParser";
 import { OpenqueryContext } from "./TSqlParser";
 import { OpendatasourceContext } from "./TSqlParser";
 import { Declare_statementContext } from "./TSqlParser";
+import { Xml_declarationContext } from "./TSqlParser";
 import { Cursor_statementContext } from "./TSqlParser";
 import { Backup_databaseContext } from "./TSqlParser";
 import { Backup_logContext } from "./TSqlParser";
@@ -346,10 +358,15 @@ import { Kill_processContext } from "./TSqlParser";
 import { Kill_query_notificationContext } from "./TSqlParser";
 import { Kill_stats_jobContext } from "./TSqlParser";
 import { Execute_statementContext } from "./TSqlParser";
+import { Execute_body_batchContext } from "./TSqlParser";
 import { Execute_bodyContext } from "./TSqlParser";
 import { Execute_statement_argContext } from "./TSqlParser";
+import { Execute_statement_arg_namedContext } from "./TSqlParser";
+import { Execute_statement_arg_unnamedContext } from "./TSqlParser";
+import { Execute_parameterContext } from "./TSqlParser";
 import { Execute_var_stringContext } from "./TSqlParser";
 import { Security_statementContext } from "./TSqlParser";
+import { Principal_idContext } from "./TSqlParser";
 import { Create_certificateContext } from "./TSqlParser";
 import { Existing_keysContext } from "./TSqlParser";
 import { Private_key_optionsContext } from "./TSqlParser";
@@ -365,16 +382,20 @@ import { Decryption_mechanismContext } from "./TSqlParser";
 import { Grant_permissionContext } from "./TSqlParser";
 import { Set_statementContext } from "./TSqlParser";
 import { Transaction_statementContext } from "./TSqlParser";
+import { Go_batch_statementContext } from "./TSqlParser";
 import { Go_statementContext } from "./TSqlParser";
 import { Use_statementContext } from "./TSqlParser";
 import { Setuser_statementContext } from "./TSqlParser";
 import { Reconfigure_statementContext } from "./TSqlParser";
 import { Shutdown_statementContext } from "./TSqlParser";
+import { Dbcc_specialContext } from "./TSqlParser";
 import { Dbcc_clauseContext } from "./TSqlParser";
+import { Dbcc_commandContext } from "./TSqlParser";
 import { Dbcc_optionsContext } from "./TSqlParser";
 import { Execute_clauseContext } from "./TSqlParser";
 import { Declare_localContext } from "./TSqlParser";
 import { Table_type_definitionContext } from "./TSqlParser";
+import { Table_type_indicesContext } from "./TSqlParser";
 import { Xml_type_definitionContext } from "./TSqlParser";
 import { Xml_schema_collectionContext } from "./TSqlParser";
 import { Column_def_table_constraintsContext } from "./TSqlParser";
@@ -394,6 +415,7 @@ import { Fetch_cursorContext } from "./TSqlParser";
 import { Set_specialContext } from "./TSqlParser";
 import { Constant_LOCAL_IDContext } from "./TSqlParser";
 import { ExpressionContext } from "./TSqlParser";
+import { Time_zoneContext } from "./TSqlParser";
 import { Primitive_expressionContext } from "./TSqlParser";
 import { Case_expressionContext } from "./TSqlParser";
 import { Unary_operator_expressionContext } from "./TSqlParser";
@@ -403,10 +425,9 @@ import { SubqueryContext } from "./TSqlParser";
 import { With_expressionContext } from "./TSqlParser";
 import { Common_table_expressionContext } from "./TSqlParser";
 import { Update_elemContext } from "./TSqlParser";
-import { Search_condition_listContext } from "./TSqlParser";
+import { Update_elem_mergeContext } from "./TSqlParser";
 import { Search_conditionContext } from "./TSqlParser";
-import { Search_condition_andContext } from "./TSqlParser";
-import { Search_condition_notContext } from "./TSqlParser";
+import { Predicate_brContext } from "./TSqlParser";
 import { PredicateContext } from "./TSqlParser";
 import { Query_expressionContext } from "./TSqlParser";
 import { Sql_unionContext } from "./TSqlParser";
@@ -434,10 +455,20 @@ import { Table_sourceContext } from "./TSqlParser";
 import { Table_source_item_joinedContext } from "./TSqlParser";
 import { Table_source_itemContext } from "./TSqlParser";
 import { Open_xmlContext } from "./TSqlParser";
+import { Open_jsonContext } from "./TSqlParser";
+import { Json_declarationContext } from "./TSqlParser";
+import { Json_column_declarationContext } from "./TSqlParser";
 import { Schema_declarationContext } from "./TSqlParser";
 import { Column_declarationContext } from "./TSqlParser";
 import { Change_tableContext } from "./TSqlParser";
+import { Change_table_changesContext } from "./TSqlParser";
+import { Change_table_versionContext } from "./TSqlParser";
 import { Join_partContext } from "./TSqlParser";
+import { Join_onContext } from "./TSqlParser";
+import { Cross_joinContext } from "./TSqlParser";
+import { ApplyContext } from "./TSqlParser";
+import { PivotContext } from "./TSqlParser";
+import { UnpivotContext } from "./TSqlParser";
 import { Pivot_clauseContext } from "./TSqlParser";
 import { Unpivot_clauseContext } from "./TSqlParser";
 import { Full_column_name_listContext } from "./TSqlParser";
@@ -446,11 +477,18 @@ import { Rowset_functionContext } from "./TSqlParser";
 import { Bulk_optionContext } from "./TSqlParser";
 import { Derived_tableContext } from "./TSqlParser";
 import { Function_callContext } from "./TSqlParser";
+import { Freetext_functionContext } from "./TSqlParser";
+import { Freetext_predicateContext } from "./TSqlParser";
+import { Build_in_functionsContext } from "./TSqlParser";
 import { Xml_data_type_methodsContext } from "./TSqlParser";
 import { Value_methodContext } from "./TSqlParser";
+import { Value_callContext } from "./TSqlParser";
 import { Query_methodContext } from "./TSqlParser";
+import { Query_callContext } from "./TSqlParser";
 import { Exist_methodContext } from "./TSqlParser";
+import { Exist_callContext } from "./TSqlParser";
 import { Modify_methodContext } from "./TSqlParser";
+import { Modify_callContext } from "./TSqlParser";
 import { Nodes_methodContext } from "./TSqlParser";
 import { Switch_sectionContext } from "./TSqlParser";
 import { Switch_search_condition_sectionContext } from "./TSqlParser";
@@ -492,6 +530,8 @@ import { Func_proc_name_server_database_schemaContext } from "./TSqlParser";
 import { Ddl_objectContext } from "./TSqlParser";
 import { Full_column_nameContext } from "./TSqlParser";
 import { Column_name_list_with_orderContext } from "./TSqlParser";
+import { Insert_column_name_listContext } from "./TSqlParser";
+import { Insert_column_idContext } from "./TSqlParser";
 import { Column_name_listContext } from "./TSqlParser";
 import { Cursor_nameContext } from "./TSqlParser";
 import { On_offContext } from "./TSqlParser";
@@ -512,6 +552,7 @@ import { Data_typeContext } from "./TSqlParser";
 import { Default_valueContext } from "./TSqlParser";
 import { ConstantContext } from "./TSqlParser";
 import { SignContext } from "./TSqlParser";
+import { KeywordContext } from "./TSqlParser";
 import { IdContext } from "./TSqlParser";
 import { Simple_idContext } from "./TSqlParser";
 import { Comparison_operatorContext } from "./TSqlParser";
@@ -524,292 +565,6 @@ import { File_sizeContext } from "./TSqlParser";
  * `TSqlParser`.
  */
 export interface TSqlParserListener extends ParseTreeListener {
-	/**
-	 * Enter a parse tree produced by the `BINARY_CHECKSUM`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterBINARY_CHECKSUM?: (ctx: BINARY_CHECKSUMContext) => void;
-	/**
-	 * Exit a parse tree produced by the `BINARY_CHECKSUM`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitBINARY_CHECKSUM?: (ctx: BINARY_CHECKSUMContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `CAST`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterCAST?: (ctx: CASTContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CAST`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitCAST?: (ctx: CASTContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `CONVERT`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterCONVERT?: (ctx: CONVERTContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CONVERT`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitCONVERT?: (ctx: CONVERTContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `CHECKSUM`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterCHECKSUM?: (ctx: CHECKSUMContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CHECKSUM`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitCHECKSUM?: (ctx: CHECKSUMContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `COALESCE`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterCOALESCE?: (ctx: COALESCEContext) => void;
-	/**
-	 * Exit a parse tree produced by the `COALESCE`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitCOALESCE?: (ctx: COALESCEContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `CURRENT_TIMESTAMP`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterCURRENT_TIMESTAMP?: (ctx: CURRENT_TIMESTAMPContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CURRENT_TIMESTAMP`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitCURRENT_TIMESTAMP?: (ctx: CURRENT_TIMESTAMPContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `CURRENT_USER`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterCURRENT_USER?: (ctx: CURRENT_USERContext) => void;
-	/**
-	 * Exit a parse tree produced by the `CURRENT_USER`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitCURRENT_USER?: (ctx: CURRENT_USERContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `DATEADD`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterDATEADD?: (ctx: DATEADDContext) => void;
-	/**
-	 * Exit a parse tree produced by the `DATEADD`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitDATEADD?: (ctx: DATEADDContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `DATEDIFF`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterDATEDIFF?: (ctx: DATEDIFFContext) => void;
-	/**
-	 * Exit a parse tree produced by the `DATEDIFF`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitDATEDIFF?: (ctx: DATEDIFFContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `DATENAME`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterDATENAME?: (ctx: DATENAMEContext) => void;
-	/**
-	 * Exit a parse tree produced by the `DATENAME`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitDATENAME?: (ctx: DATENAMEContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `DATEPART`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterDATEPART?: (ctx: DATEPARTContext) => void;
-	/**
-	 * Exit a parse tree produced by the `DATEPART`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitDATEPART?: (ctx: DATEPARTContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `GETDATE`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterGETDATE?: (ctx: GETDATEContext) => void;
-	/**
-	 * Exit a parse tree produced by the `GETDATE`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitGETDATE?: (ctx: GETDATEContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `GETUTCDATE`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterGETUTCDATE?: (ctx: GETUTCDATEContext) => void;
-	/**
-	 * Exit a parse tree produced by the `GETUTCDATE`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitGETUTCDATE?: (ctx: GETUTCDATEContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `IDENTITY`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterIDENTITY?: (ctx: IDENTITYContext) => void;
-	/**
-	 * Exit a parse tree produced by the `IDENTITY`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitIDENTITY?: (ctx: IDENTITYContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `MIN_ACTIVE_ROWVERSION`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterMIN_ACTIVE_ROWVERSION?: (ctx: MIN_ACTIVE_ROWVERSIONContext) => void;
-	/**
-	 * Exit a parse tree produced by the `MIN_ACTIVE_ROWVERSION`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitMIN_ACTIVE_ROWVERSION?: (ctx: MIN_ACTIVE_ROWVERSIONContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `NULLIF`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterNULLIF?: (ctx: NULLIFContext) => void;
-	/**
-	 * Exit a parse tree produced by the `NULLIF`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitNULLIF?: (ctx: NULLIFContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `STUFF`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterSTUFF?: (ctx: STUFFContext) => void;
-	/**
-	 * Exit a parse tree produced by the `STUFF`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitSTUFF?: (ctx: STUFFContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `SESSION_USER`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterSESSION_USER?: (ctx: SESSION_USERContext) => void;
-	/**
-	 * Exit a parse tree produced by the `SESSION_USER`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitSESSION_USER?: (ctx: SESSION_USERContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `SYSTEM_USER`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterSYSTEM_USER?: (ctx: SYSTEM_USERContext) => void;
-	/**
-	 * Exit a parse tree produced by the `SYSTEM_USER`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitSYSTEM_USER?: (ctx: SYSTEM_USERContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `ISNULL`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterISNULL?: (ctx: ISNULLContext) => void;
-	/**
-	 * Exit a parse tree produced by the `ISNULL`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitISNULL?: (ctx: ISNULLContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `XML_DATA_TYPE_FUNC`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterXML_DATA_TYPE_FUNC?: (ctx: XML_DATA_TYPE_FUNCContext) => void;
-	/**
-	 * Exit a parse tree produced by the `XML_DATA_TYPE_FUNC`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitXML_DATA_TYPE_FUNC?: (ctx: XML_DATA_TYPE_FUNCContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `IFF`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	enterIFF?: (ctx: IFFContext) => void;
-	/**
-	 * Exit a parse tree produced by the `IFF`
-	 * labeled alternative in `TSqlParser.function_call`.
-	 * @param ctx the parse tree
-	 */
-	exitIFF?: (ctx: IFFContext) => void;
-
 	/**
 	 * Enter a parse tree produced by the `RANKING_WINDOWED_FUNC`
 	 * labeled alternative in `TSqlParser.function_call`.
@@ -863,14 +618,352 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitSCALAR_FUNCTION?: (ctx: SCALAR_FUNCTIONContext) => void;
 
 	/**
-	 * Enter a parse tree produced by the `STRINGAGG`
+	 * Enter a parse tree produced by the `BUILT_IN_FUNC`
 	 * labeled alternative in `TSqlParser.function_call`.
+	 * @param ctx the parse tree
+	 */
+	enterBUILT_IN_FUNC?: (ctx: BUILT_IN_FUNCContext) => void;
+	/**
+	 * Exit a parse tree produced by the `BUILT_IN_FUNC`
+	 * labeled alternative in `TSqlParser.function_call`.
+	 * @param ctx the parse tree
+	 */
+	exitBUILT_IN_FUNC?: (ctx: BUILT_IN_FUNCContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `FREE_TEXT`
+	 * labeled alternative in `TSqlParser.function_call`.
+	 * @param ctx the parse tree
+	 */
+	enterFREE_TEXT?: (ctx: FREE_TEXTContext) => void;
+	/**
+	 * Exit a parse tree produced by the `FREE_TEXT`
+	 * labeled alternative in `TSqlParser.function_call`.
+	 * @param ctx the parse tree
+	 */
+	exitFREE_TEXT?: (ctx: FREE_TEXTContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `BINARY_CHECKSUM`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterBINARY_CHECKSUM?: (ctx: BINARY_CHECKSUMContext) => void;
+	/**
+	 * Exit a parse tree produced by the `BINARY_CHECKSUM`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitBINARY_CHECKSUM?: (ctx: BINARY_CHECKSUMContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `CAST`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterCAST?: (ctx: CASTContext) => void;
+	/**
+	 * Exit a parse tree produced by the `CAST`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitCAST?: (ctx: CASTContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `TRY_CAST`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterTRY_CAST?: (ctx: TRY_CASTContext) => void;
+	/**
+	 * Exit a parse tree produced by the `TRY_CAST`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitTRY_CAST?: (ctx: TRY_CASTContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `CONVERT`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterCONVERT?: (ctx: CONVERTContext) => void;
+	/**
+	 * Exit a parse tree produced by the `CONVERT`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitCONVERT?: (ctx: CONVERTContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `CHECKSUM`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterCHECKSUM?: (ctx: CHECKSUMContext) => void;
+	/**
+	 * Exit a parse tree produced by the `CHECKSUM`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitCHECKSUM?: (ctx: CHECKSUMContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `COALESCE`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterCOALESCE?: (ctx: COALESCEContext) => void;
+	/**
+	 * Exit a parse tree produced by the `COALESCE`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitCOALESCE?: (ctx: COALESCEContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `CURRENT_TIMESTAMP`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterCURRENT_TIMESTAMP?: (ctx: CURRENT_TIMESTAMPContext) => void;
+	/**
+	 * Exit a parse tree produced by the `CURRENT_TIMESTAMP`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitCURRENT_TIMESTAMP?: (ctx: CURRENT_TIMESTAMPContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `CURRENT_USER`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterCURRENT_USER?: (ctx: CURRENT_USERContext) => void;
+	/**
+	 * Exit a parse tree produced by the `CURRENT_USER`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitCURRENT_USER?: (ctx: CURRENT_USERContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `DATEADD`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterDATEADD?: (ctx: DATEADDContext) => void;
+	/**
+	 * Exit a parse tree produced by the `DATEADD`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitDATEADD?: (ctx: DATEADDContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `DATEDIFF`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterDATEDIFF?: (ctx: DATEDIFFContext) => void;
+	/**
+	 * Exit a parse tree produced by the `DATEDIFF`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitDATEDIFF?: (ctx: DATEDIFFContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `DATENAME`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterDATENAME?: (ctx: DATENAMEContext) => void;
+	/**
+	 * Exit a parse tree produced by the `DATENAME`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitDATENAME?: (ctx: DATENAMEContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `DATEPART`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterDATEPART?: (ctx: DATEPARTContext) => void;
+	/**
+	 * Exit a parse tree produced by the `DATEPART`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitDATEPART?: (ctx: DATEPARTContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `GETDATE`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterGETDATE?: (ctx: GETDATEContext) => void;
+	/**
+	 * Exit a parse tree produced by the `GETDATE`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitGETDATE?: (ctx: GETDATEContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `GETUTCDATE`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterGETUTCDATE?: (ctx: GETUTCDATEContext) => void;
+	/**
+	 * Exit a parse tree produced by the `GETUTCDATE`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitGETUTCDATE?: (ctx: GETUTCDATEContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `IDENTITY`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterIDENTITY?: (ctx: IDENTITYContext) => void;
+	/**
+	 * Exit a parse tree produced by the `IDENTITY`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitIDENTITY?: (ctx: IDENTITYContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `MIN_ACTIVE_ROWVERSION`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterMIN_ACTIVE_ROWVERSION?: (ctx: MIN_ACTIVE_ROWVERSIONContext) => void;
+	/**
+	 * Exit a parse tree produced by the `MIN_ACTIVE_ROWVERSION`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitMIN_ACTIVE_ROWVERSION?: (ctx: MIN_ACTIVE_ROWVERSIONContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `NULLIF`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterNULLIF?: (ctx: NULLIFContext) => void;
+	/**
+	 * Exit a parse tree produced by the `NULLIF`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitNULLIF?: (ctx: NULLIFContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `STUFF`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterSTUFF?: (ctx: STUFFContext) => void;
+	/**
+	 * Exit a parse tree produced by the `STUFF`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitSTUFF?: (ctx: STUFFContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `SESSION_USER`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterSESSION_USER?: (ctx: SESSION_USERContext) => void;
+	/**
+	 * Exit a parse tree produced by the `SESSION_USER`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitSESSION_USER?: (ctx: SESSION_USERContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `SYSTEM_USER`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterSYSTEM_USER?: (ctx: SYSTEM_USERContext) => void;
+	/**
+	 * Exit a parse tree produced by the `SYSTEM_USER`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitSYSTEM_USER?: (ctx: SYSTEM_USERContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `USER`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterUSER?: (ctx: USERContext) => void;
+	/**
+	 * Exit a parse tree produced by the `USER`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitUSER?: (ctx: USERContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `ISNULL`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterISNULL?: (ctx: ISNULLContext) => void;
+	/**
+	 * Exit a parse tree produced by the `ISNULL`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitISNULL?: (ctx: ISNULLContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `XML_DATA_TYPE_FUNC`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterXML_DATA_TYPE_FUNC?: (ctx: XML_DATA_TYPE_FUNCContext) => void;
+	/**
+	 * Exit a parse tree produced by the `XML_DATA_TYPE_FUNC`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitXML_DATA_TYPE_FUNC?: (ctx: XML_DATA_TYPE_FUNCContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `IIF`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterIIF?: (ctx: IIFContext) => void;
+	/**
+	 * Exit a parse tree produced by the `IIF`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitIIF?: (ctx: IIFContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `STRINGAGG`
+	 * labeled alternative in `TSqlParser.build_in_functions`.
 	 * @param ctx the parse tree
 	 */
 	enterSTRINGAGG?: (ctx: STRINGAGGContext) => void;
 	/**
 	 * Exit a parse tree produced by the `STRINGAGG`
-	 * labeled alternative in `TSqlParser.function_call`.
+	 * labeled alternative in `TSqlParser.build_in_functions`.
 	 * @param ctx the parse tree
 	 */
 	exitSTRINGAGG?: (ctx: STRINGAGGContext) => void;
@@ -898,6 +991,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitBatch?: (ctx: BatchContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `TSqlParser.batch_level_statement`.
+	 * @param ctx the parse tree
+	 */
+	enterBatch_level_statement?: (ctx: Batch_level_statementContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.batch_level_statement`.
+	 * @param ctx the parse tree
+	 */
+	exitBatch_level_statement?: (ctx: Batch_level_statementContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `TSqlParser.sql_clauses`.
 	 * @param ctx the parse tree
 	 */
@@ -907,17 +1011,6 @@ export interface TSqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitSql_clauses?: (ctx: Sql_clausesContext) => void;
-
-	/**
-	 * Enter a parse tree produced by `TSqlParser.sql_clause`.
-	 * @param ctx the parse tree
-	 */
-	enterSql_clause?: (ctx: Sql_clauseContext) => void;
-	/**
-	 * Exit a parse tree produced by `TSqlParser.sql_clause`.
-	 * @param ctx the parse tree
-	 */
-	exitSql_clause?: (ctx: Sql_clauseContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `TSqlParser.dml_clause`.
@@ -1767,6 +1860,28 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitAlter_availability_group_options?: (ctx: Alter_availability_group_optionsContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `TSqlParser.ip_v4_failover`.
+	 * @param ctx the parse tree
+	 */
+	enterIp_v4_failover?: (ctx: Ip_v4_failoverContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.ip_v4_failover`.
+	 * @param ctx the parse tree
+	 */
+	exitIp_v4_failover?: (ctx: Ip_v4_failoverContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.ip_v6_failover`.
+	 * @param ctx the parse tree
+	 */
+	enterIp_v6_failover?: (ctx: Ip_v6_failoverContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.ip_v6_failover`.
+	 * @param ctx the parse tree
+	 */
+	exitIp_v6_failover?: (ctx: Ip_v6_failoverContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `TSqlParser.create_or_alter_broker_priority`.
 	 * @param ctx the parse tree
 	 */
@@ -1908,6 +2023,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitDrop_database_audit_specification?: (ctx: Drop_database_audit_specificationContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.drop_database_encryption_key`.
+	 * @param ctx the parse tree
+	 */
+	enterDrop_database_encryption_key?: (ctx: Drop_database_encryption_keyContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.drop_database_encryption_key`.
+	 * @param ctx the parse tree
+	 */
+	exitDrop_database_encryption_key?: (ctx: Drop_database_encryption_keyContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `TSqlParser.drop_database_scoped_credential`.
@@ -3241,6 +3367,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitMerge_statement?: (ctx: Merge_statementContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `TSqlParser.when_matches`.
+	 * @param ctx the parse tree
+	 */
+	enterWhen_matches?: (ctx: When_matchesContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.when_matches`.
+	 * @param ctx the parse tree
+	 */
+	exitWhen_matches?: (ctx: When_matchesContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `TSqlParser.merge_matched`.
 	 * @param ctx the parse tree
 	 */
@@ -3316,6 +3453,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitReceive_statement?: (ctx: Receive_statementContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.select_statement_standalone`.
+	 * @param ctx the parse tree
+	 */
+	enterSelect_statement_standalone?: (ctx: Select_statement_standaloneContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.select_statement_standalone`.
+	 * @param ctx the parse tree
+	 */
+	exitSelect_statement_standalone?: (ctx: Select_statement_standaloneContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `TSqlParser.select_statement`.
@@ -3404,6 +3552,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitCreate_index?: (ctx: Create_indexContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.create_xml_index`.
+	 * @param ctx the parse tree
+	 */
+	enterCreate_xml_index?: (ctx: Create_xml_indexContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.create_xml_index`.
+	 * @param ctx the parse tree
+	 */
+	exitCreate_xml_index?: (ctx: Create_xml_indexContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `TSqlParser.create_or_alter_procedure`.
@@ -3591,6 +3750,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitCreate_table?: (ctx: Create_tableContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.table_indices`.
+	 * @param ctx the parse tree
+	 */
+	enterTable_indices?: (ctx: Table_indicesContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.table_indices`.
+	 * @param ctx the parse tree
+	 */
+	exitTable_indices?: (ctx: Table_indicesContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `TSqlParser.table_options`.
@@ -4231,6 +4401,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitDeclare_statement?: (ctx: Declare_statementContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `TSqlParser.xml_declaration`.
+	 * @param ctx the parse tree
+	 */
+	enterXml_declaration?: (ctx: Xml_declarationContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.xml_declaration`.
+	 * @param ctx the parse tree
+	 */
+	exitXml_declaration?: (ctx: Xml_declarationContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `TSqlParser.cursor_statement`.
 	 * @param ctx the parse tree
 	 */
@@ -4352,6 +4533,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitExecute_statement?: (ctx: Execute_statementContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `TSqlParser.execute_body_batch`.
+	 * @param ctx the parse tree
+	 */
+	enterExecute_body_batch?: (ctx: Execute_body_batchContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.execute_body_batch`.
+	 * @param ctx the parse tree
+	 */
+	exitExecute_body_batch?: (ctx: Execute_body_batchContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `TSqlParser.execute_body`.
 	 * @param ctx the parse tree
 	 */
@@ -4374,6 +4566,39 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitExecute_statement_arg?: (ctx: Execute_statement_argContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `TSqlParser.execute_statement_arg_named`.
+	 * @param ctx the parse tree
+	 */
+	enterExecute_statement_arg_named?: (ctx: Execute_statement_arg_namedContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.execute_statement_arg_named`.
+	 * @param ctx the parse tree
+	 */
+	exitExecute_statement_arg_named?: (ctx: Execute_statement_arg_namedContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.execute_statement_arg_unnamed`.
+	 * @param ctx the parse tree
+	 */
+	enterExecute_statement_arg_unnamed?: (ctx: Execute_statement_arg_unnamedContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.execute_statement_arg_unnamed`.
+	 * @param ctx the parse tree
+	 */
+	exitExecute_statement_arg_unnamed?: (ctx: Execute_statement_arg_unnamedContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.execute_parameter`.
+	 * @param ctx the parse tree
+	 */
+	enterExecute_parameter?: (ctx: Execute_parameterContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.execute_parameter`.
+	 * @param ctx the parse tree
+	 */
+	exitExecute_parameter?: (ctx: Execute_parameterContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `TSqlParser.execute_var_string`.
 	 * @param ctx the parse tree
 	 */
@@ -4394,6 +4619,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitSecurity_statement?: (ctx: Security_statementContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.principal_id`.
+	 * @param ctx the parse tree
+	 */
+	enterPrincipal_id?: (ctx: Principal_idContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.principal_id`.
+	 * @param ctx the parse tree
+	 */
+	exitPrincipal_id?: (ctx: Principal_idContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `TSqlParser.create_certificate`.
@@ -4561,6 +4797,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitTransaction_statement?: (ctx: Transaction_statementContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `TSqlParser.go_batch_statement`.
+	 * @param ctx the parse tree
+	 */
+	enterGo_batch_statement?: (ctx: Go_batch_statementContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.go_batch_statement`.
+	 * @param ctx the parse tree
+	 */
+	exitGo_batch_statement?: (ctx: Go_batch_statementContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `TSqlParser.go_statement`.
 	 * @param ctx the parse tree
 	 */
@@ -4616,6 +4863,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitShutdown_statement?: (ctx: Shutdown_statementContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `TSqlParser.dbcc_special`.
+	 * @param ctx the parse tree
+	 */
+	enterDbcc_special?: (ctx: Dbcc_specialContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.dbcc_special`.
+	 * @param ctx the parse tree
+	 */
+	exitDbcc_special?: (ctx: Dbcc_specialContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `TSqlParser.dbcc_clause`.
 	 * @param ctx the parse tree
 	 */
@@ -4625,6 +4883,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitDbcc_clause?: (ctx: Dbcc_clauseContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.dbcc_command`.
+	 * @param ctx the parse tree
+	 */
+	enterDbcc_command?: (ctx: Dbcc_commandContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.dbcc_command`.
+	 * @param ctx the parse tree
+	 */
+	exitDbcc_command?: (ctx: Dbcc_commandContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `TSqlParser.dbcc_options`.
@@ -4669,6 +4938,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitTable_type_definition?: (ctx: Table_type_definitionContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.table_type_indices`.
+	 * @param ctx the parse tree
+	 */
+	enterTable_type_indices?: (ctx: Table_type_indicesContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.table_type_indices`.
+	 * @param ctx the parse tree
+	 */
+	exitTable_type_indices?: (ctx: Table_type_indicesContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `TSqlParser.xml_type_definition`.
@@ -4880,6 +5160,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitExpression?: (ctx: ExpressionContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `TSqlParser.time_zone`.
+	 * @param ctx the parse tree
+	 */
+	enterTime_zone?: (ctx: Time_zoneContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.time_zone`.
+	 * @param ctx the parse tree
+	 */
+	exitTime_zone?: (ctx: Time_zoneContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `TSqlParser.primitive_expression`.
 	 * @param ctx the parse tree
 	 */
@@ -4979,15 +5270,15 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitUpdate_elem?: (ctx: Update_elemContext) => void;
 
 	/**
-	 * Enter a parse tree produced by `TSqlParser.search_condition_list`.
+	 * Enter a parse tree produced by `TSqlParser.update_elem_merge`.
 	 * @param ctx the parse tree
 	 */
-	enterSearch_condition_list?: (ctx: Search_condition_listContext) => void;
+	enterUpdate_elem_merge?: (ctx: Update_elem_mergeContext) => void;
 	/**
-	 * Exit a parse tree produced by `TSqlParser.search_condition_list`.
+	 * Exit a parse tree produced by `TSqlParser.update_elem_merge`.
 	 * @param ctx the parse tree
 	 */
-	exitSearch_condition_list?: (ctx: Search_condition_listContext) => void;
+	exitUpdate_elem_merge?: (ctx: Update_elem_mergeContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `TSqlParser.search_condition`.
@@ -5001,26 +5292,15 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitSearch_condition?: (ctx: Search_conditionContext) => void;
 
 	/**
-	 * Enter a parse tree produced by `TSqlParser.search_condition_and`.
+	 * Enter a parse tree produced by `TSqlParser.predicate_br`.
 	 * @param ctx the parse tree
 	 */
-	enterSearch_condition_and?: (ctx: Search_condition_andContext) => void;
+	enterPredicate_br?: (ctx: Predicate_brContext) => void;
 	/**
-	 * Exit a parse tree produced by `TSqlParser.search_condition_and`.
+	 * Exit a parse tree produced by `TSqlParser.predicate_br`.
 	 * @param ctx the parse tree
 	 */
-	exitSearch_condition_and?: (ctx: Search_condition_andContext) => void;
-
-	/**
-	 * Enter a parse tree produced by `TSqlParser.search_condition_not`.
-	 * @param ctx the parse tree
-	 */
-	enterSearch_condition_not?: (ctx: Search_condition_notContext) => void;
-	/**
-	 * Exit a parse tree produced by `TSqlParser.search_condition_not`.
-	 * @param ctx the parse tree
-	 */
-	exitSearch_condition_not?: (ctx: Search_condition_notContext) => void;
+	exitPredicate_br?: (ctx: Predicate_brContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `TSqlParser.predicate`.
@@ -5320,6 +5600,39 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitOpen_xml?: (ctx: Open_xmlContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `TSqlParser.open_json`.
+	 * @param ctx the parse tree
+	 */
+	enterOpen_json?: (ctx: Open_jsonContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.open_json`.
+	 * @param ctx the parse tree
+	 */
+	exitOpen_json?: (ctx: Open_jsonContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.json_declaration`.
+	 * @param ctx the parse tree
+	 */
+	enterJson_declaration?: (ctx: Json_declarationContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.json_declaration`.
+	 * @param ctx the parse tree
+	 */
+	exitJson_declaration?: (ctx: Json_declarationContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.json_column_declaration`.
+	 * @param ctx the parse tree
+	 */
+	enterJson_column_declaration?: (ctx: Json_column_declarationContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.json_column_declaration`.
+	 * @param ctx the parse tree
+	 */
+	exitJson_column_declaration?: (ctx: Json_column_declarationContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `TSqlParser.schema_declaration`.
 	 * @param ctx the parse tree
 	 */
@@ -5353,6 +5666,28 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitChange_table?: (ctx: Change_tableContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `TSqlParser.change_table_changes`.
+	 * @param ctx the parse tree
+	 */
+	enterChange_table_changes?: (ctx: Change_table_changesContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.change_table_changes`.
+	 * @param ctx the parse tree
+	 */
+	exitChange_table_changes?: (ctx: Change_table_changesContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.change_table_version`.
+	 * @param ctx the parse tree
+	 */
+	enterChange_table_version?: (ctx: Change_table_versionContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.change_table_version`.
+	 * @param ctx the parse tree
+	 */
+	exitChange_table_version?: (ctx: Change_table_versionContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `TSqlParser.join_part`.
 	 * @param ctx the parse tree
 	 */
@@ -5362,6 +5697,61 @@ export interface TSqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitJoin_part?: (ctx: Join_partContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.join_on`.
+	 * @param ctx the parse tree
+	 */
+	enterJoin_on?: (ctx: Join_onContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.join_on`.
+	 * @param ctx the parse tree
+	 */
+	exitJoin_on?: (ctx: Join_onContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.cross_join`.
+	 * @param ctx the parse tree
+	 */
+	enterCross_join?: (ctx: Cross_joinContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.cross_join`.
+	 * @param ctx the parse tree
+	 */
+	exitCross_join?: (ctx: Cross_joinContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.apply`.
+	 * @param ctx the parse tree
+	 */
+	enterApply?: (ctx: ApplyContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.apply`.
+	 * @param ctx the parse tree
+	 */
+	exitApply?: (ctx: ApplyContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.pivot`.
+	 * @param ctx the parse tree
+	 */
+	enterPivot?: (ctx: PivotContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.pivot`.
+	 * @param ctx the parse tree
+	 */
+	exitPivot?: (ctx: PivotContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.unpivot`.
+	 * @param ctx the parse tree
+	 */
+	enterUnpivot?: (ctx: UnpivotContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.unpivot`.
+	 * @param ctx the parse tree
+	 */
+	exitUnpivot?: (ctx: UnpivotContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `TSqlParser.pivot_clause`.
@@ -5452,6 +5842,39 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitFunction_call?: (ctx: Function_callContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `TSqlParser.freetext_function`.
+	 * @param ctx the parse tree
+	 */
+	enterFreetext_function?: (ctx: Freetext_functionContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.freetext_function`.
+	 * @param ctx the parse tree
+	 */
+	exitFreetext_function?: (ctx: Freetext_functionContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.freetext_predicate`.
+	 * @param ctx the parse tree
+	 */
+	enterFreetext_predicate?: (ctx: Freetext_predicateContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.freetext_predicate`.
+	 * @param ctx the parse tree
+	 */
+	exitFreetext_predicate?: (ctx: Freetext_predicateContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	enterBuild_in_functions?: (ctx: Build_in_functionsContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.build_in_functions`.
+	 * @param ctx the parse tree
+	 */
+	exitBuild_in_functions?: (ctx: Build_in_functionsContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `TSqlParser.xml_data_type_methods`.
 	 * @param ctx the parse tree
 	 */
@@ -5474,6 +5897,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitValue_method?: (ctx: Value_methodContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `TSqlParser.value_call`.
+	 * @param ctx the parse tree
+	 */
+	enterValue_call?: (ctx: Value_callContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.value_call`.
+	 * @param ctx the parse tree
+	 */
+	exitValue_call?: (ctx: Value_callContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `TSqlParser.query_method`.
 	 * @param ctx the parse tree
 	 */
@@ -5483,6 +5917,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitQuery_method?: (ctx: Query_methodContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.query_call`.
+	 * @param ctx the parse tree
+	 */
+	enterQuery_call?: (ctx: Query_callContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.query_call`.
+	 * @param ctx the parse tree
+	 */
+	exitQuery_call?: (ctx: Query_callContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `TSqlParser.exist_method`.
@@ -5496,6 +5941,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitExist_method?: (ctx: Exist_methodContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `TSqlParser.exist_call`.
+	 * @param ctx the parse tree
+	 */
+	enterExist_call?: (ctx: Exist_callContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.exist_call`.
+	 * @param ctx the parse tree
+	 */
+	exitExist_call?: (ctx: Exist_callContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `TSqlParser.modify_method`.
 	 * @param ctx the parse tree
 	 */
@@ -5505,6 +5961,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitModify_method?: (ctx: Modify_methodContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.modify_call`.
+	 * @param ctx the parse tree
+	 */
+	enterModify_call?: (ctx: Modify_callContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.modify_call`.
+	 * @param ctx the parse tree
+	 */
+	exitModify_call?: (ctx: Modify_callContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `TSqlParser.nodes_method`.
@@ -5958,6 +6425,28 @@ export interface TSqlParserListener extends ParseTreeListener {
 	exitColumn_name_list_with_order?: (ctx: Column_name_list_with_orderContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `TSqlParser.insert_column_name_list`.
+	 * @param ctx the parse tree
+	 */
+	enterInsert_column_name_list?: (ctx: Insert_column_name_listContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.insert_column_name_list`.
+	 * @param ctx the parse tree
+	 */
+	exitInsert_column_name_list?: (ctx: Insert_column_name_listContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.insert_column_id`.
+	 * @param ctx the parse tree
+	 */
+	enterInsert_column_id?: (ctx: Insert_column_idContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.insert_column_id`.
+	 * @param ctx the parse tree
+	 */
+	exitInsert_column_id?: (ctx: Insert_column_idContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `TSqlParser.column_name_list`.
 	 * @param ctx the parse tree
 	 */
@@ -6176,6 +6665,17 @@ export interface TSqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitSign?: (ctx: SignContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `TSqlParser.keyword`.
+	 * @param ctx the parse tree
+	 */
+	enterKeyword?: (ctx: KeywordContext) => void;
+	/**
+	 * Exit a parse tree produced by `TSqlParser.keyword`.
+	 * @param ctx the parse tree
+	 */
+	exitKeyword?: (ctx: KeywordContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `TSqlParser.id`.
